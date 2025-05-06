@@ -130,11 +130,11 @@ def init_language_client():
     try:
         # Check for Google Cloud credentials in Streamlit secrets
         if 'GOOGLE_APPLICATION_CREDENTIALS' not in os.environ:
-            if 'GOOGLE_CREDENTIALS' in st.secrets:
+            if 'gcp_service_account' in st.secrets:
                 # Create a temporary credentials file
                 creds_path = '/tmp/google_credentials.json'
                 with open(creds_path, 'w') as f:
-                    json.dump(st.secrets['GOOGLE_CREDENTIALS'], f)
+                    json.dump(st.secrets['gcp_service_account'], f)
                 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = creds_path
         
         return language_v1.LanguageServiceClient()
