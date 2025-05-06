@@ -111,8 +111,8 @@ def init_bluesky_client():
     try:
         client = Client()
         # Get credentials from environment variables or Streamlit secrets
-        BSKY_USERNAME = st.secrets.get("BSKY_USERNAME", os.getenv("BSKY_USERNAME"))
-        BSKY_PASSWORD = st.secrets.get("BSKY_PASSWORD", os.getenv("BSKY_PASSWORD"))
+        BSKY_USERNAME = st.secrets["bluesky"]["username"] if "bluesky" in st.secrets else os.getenv("BSKY_USERNAME")
+        BSKY_PASSWORD = st.secrets["bluesky"]["password"] if "bluesky" in st.secrets else os.getenv("BSKY_PASSWORD")
         
         if BSKY_USERNAME and BSKY_PASSWORD:
             client.login(BSKY_USERNAME, BSKY_PASSWORD)
