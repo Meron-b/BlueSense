@@ -1,0 +1,6 @@
+streamlit==1.32.0
+pandas==2.2.1
+matplotlib==3.8.3
+python-dotenv==1.0.1
+atproto==0.0.61
+google-cloud-language==2.13.1 
