@@ -2,55 +2,10 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
-from wordcloud import WordCloud
 import matplotlib.cm as cm
 from collections import Counter
 import re
 import matplotlib.dates as mdates
-
-def create_wordcloud(df, sentiment_category=None):
-    """
-    Create a word cloud from the text of posts, optionally filtered by sentiment category.
-    
-    Args:
-        df: DataFrame containing the posts
-        sentiment_category: Optional filter by sentiment category ('Positive', 'Negative', 'Neutral')
-    
-    Returns:
-        A matplotlib figure containing the word cloud
-    """
-    # Filter by sentiment category if specified
-    if sentiment_category:
-        text_data = ' '.join(df[df['category'] == sentiment_category]['cleaned_text'])
-    else:
-        text_data = ' '.join(df['cleaned_text'])
-    
-    # If no text data, return None
-    if not text_data:
-        return None
-    
-    # Create word cloud
-    wordcloud = WordCloud(
-        width=800, 
-        height=400, 
-        background_color='white',
-        max_words=100,
-        contour_width=3,
-        contour_color='steelblue'
-    ).generate(text_data)
-    
-    # Create figure
-    fig, ax = plt.subplots(figsize=(10, 5))
-    ax.imshow(wordcloud, interpolation='bilinear')
-    ax.axis('off')
-    
-    # Set title
-    if sentiment_category:
-        ax.set_title(f"Word Cloud for {sentiment_category} Posts", fontsize=16)
-    else:
-        ax.set_title("Word Cloud for All Posts", fontsize=16)
-    
-    return fig
 
 def sentiment_over_time(df):
     """
