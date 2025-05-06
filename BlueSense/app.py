@@ -458,8 +458,8 @@ with center:
         """
         <div style='text-align: left; margin-top: 3em; color: #888; font-size: 1.1em;'>
             More info and ⭐ at
-            <a href="https://github.com/coms2132-sp25/final-project-Meron-b" target="_blank" style="color: #0085FF; text-decoration: underline;">
-                github.com/coms2132-sp25/final-project-Meron-b
+            <a href="https://github.com/Meron-b/BlueSense" target="_blank" style="color: #0085FF; text-decoration: underline;">
+                github.com/Meron-b/BlueSense
             </a>
         </div>
         """,
