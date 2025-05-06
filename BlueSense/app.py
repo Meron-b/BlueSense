@@ -133,8 +133,10 @@ def init_language_client():
             if 'gcp_service_account' in st.secrets:
                 # Create a temporary credentials file
                 creds_path = '/tmp/google_credentials.json'
+                # Convert AttrDict to regular dictionary
+                creds_dict = dict(st.secrets['gcp_service_account'])
                 with open(creds_path, 'w') as f:
-                    json.dump(st.secrets['gcp_service_account'], f)
+                    json.dump(creds_dict, f)
                 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = creds_path
         
         return language_v1.LanguageServiceClient()
