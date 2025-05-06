@@ -1,6 +1,29 @@
-# BlueSense - Bluesky Sentiment Analysis
+## 🔍 BlueSense: BlueSky Sentiment Analysis Platform
 
 A Streamlit application for analyzing sentiment in Bluesky posts.
+
+Try it out yourself! ➡ [bluesense.streamlit.app](https://bluesense.streamlit.app/)
+
+#
+BlueSense is an interactive platform that allows users to analyze sentiment around specific topics or keywords on **BlueSky**, an open-source, decentralized social media platform launched in 2023 as an alternative to Twitter/X. On BlueSense users can input topics of interest, and the system retrieves relevant posts to perform sentiment analysis, presenting results through intuitive visualizations.
+
+BlueSense provides a simple yet powerful interface that enables users to:
+
+- **Input Topics**: Enter keywords, hashtags, or phrases through a user-friendly web interface.
+- **Data Collection**: Upon input, the system makes targeted API calls to BlueSky to retrieve a sample of posts (100) related to the specified topic.
+- **Sentiment Analysis**: Each retrieved post undergoes sentiment analysis using Google Cloud Natural Language API to classify sentiment as positive, negative, or neutral.
+- **Results Visualization**: The system provides a comprehensive analysis through multiple interactive tabs:
+    - **Overview Tab**:
+        - Overall sentiment distribution pie chart showing percentages of positive/negative/neutral posts
+        - Sentiment score distribution histogram
+        - Top 5 most positive and negative posts with their scores and authors
+    - **Temporal Analysis Tab**:
+        - Interactive timeline showing sentiment trends over time (day of use)
+        - Common terms analysis by sentiment category
+    - **Advanced Analysis Tab**:
+        - Sentiment score vs. magnitude scatter plot
+        - Detailed explanation of sentiment metrics
+        - Raw data view of all analyzed posts
 
 ## Local Development
 
@@ -14,29 +37,18 @@ A Streamlit application for analyzing sentiment in Bluesky posts.
    BSKY_USERNAME=your_username
    BSKY_PASSWORD=your_password
    ```
+    - Set up Google Cloud Natural Language API:
+     - Create a Google Cloud project
+     - Enable the Natural Language API
+     - Create a service account and download the JSON key file
+     - Set the `GOOGLE_APPLICATION_CREDENTIALS` environment variable to the path of your key file:
+       ```bash
+       export GOOGLE_APPLICATION_CREDENTIALS=/path/to/your/key-file.json
+       ```
 4. Run the app:
    ```bash
    streamlit run BlueSense/app.py
    ```
-
-## Deployment to Streamlit Cloud
-
-1. Push your code to a GitHub repository
-2. Go to [share.streamlit.io](https://share.streamlit.io)
-3. Sign in with your GitHub account
-4. Click "New app"
-5. Select your repository, branch, and main file path (`BlueSense/app.py`)
-6. Add your secrets in the Streamlit Cloud dashboard:
-   - `BSKY_USERNAME`: Your Bluesky username
-   - `BSKY_PASSWORD`: Your Bluesky password
-   - `GOOGLE_CREDENTIALS`: Your Google Cloud credentials JSON (if using sentiment analysis)
-
-## Features
-
-- Search Bluesky posts
-- Analyze sentiment using Google Cloud Natural Language API
-- Visualize sentiment trends
-- Filter and analyze post content
 
 ## Requirements
 
@@ -44,7 +56,3 @@ A Streamlit application for analyzing sentiment in Bluesky posts.
 - Streamlit
 - Bluesky account (for authenticated access)
 - Google Cloud account (for sentiment analysis)
-
-## Note
-
-For class assignment purposes, the app can run in unauthenticated mode with limited API access. For full functionality, proper credentials need to be set up in the deployment environment.
